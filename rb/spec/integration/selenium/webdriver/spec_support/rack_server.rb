@@ -30,7 +30,7 @@ module Selenium
           @path = path
           @app  = TestApp.new(path)
 
-          @host = ENV['localhost'] || 'localhost'
+          @host = ENV['localhost'] || Socket.ip_address_list.find(&:ipv4_private?).ip_address
           @port = Integer(port || PortProber.above(8180))
         end
 
